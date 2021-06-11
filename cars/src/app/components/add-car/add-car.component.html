@@ -1,0 +1,94 @@
+
+<div class="submit-form">
+
+    <div *ngIf='!submitted'>
+        <div class="form-group">
+            <label for="carbrand">Marka Samochodu</label>
+            <input
+                type = "text"
+                class = "form-control"
+                required
+                [(ngModel)]="cars.carbrand"
+                name="carbrand"
+            />
+        </div>
+        <div class="form-group">
+            <label for="carmodel">Model Samochodu</label>
+            <input
+                type = "text"
+                class = "form-control"
+                required
+                [(ngModel)]="cars.carmodel"
+                name="carmodel"
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="carplate">Numer Rejestracyjny</label>
+            <input
+                type = "text"
+                class = "form-control"
+                required
+                [(ngModel)]="cars.carplate"
+                name="carplate"
+            />
+        </div>
+
+         <div class="form-group">
+            <label for="rentdate">Data wypozyczenia</label>
+            <br>
+            <input 
+            type="date" 
+            id="rentdate" 
+            name="rentdate"
+       value="2021-06-01" 
+       [(ngModel)]="cars.rentdate"
+        >
+        </div> 
+<!-- 
+        <button (click)="saveCar()" class="btn btn-success">Dodaj</button>
+
+    </div>
+    <div *ngIf="submitted">
+            <h2>Samochód został dodany!</h2>
+            <button (click)="newCar()" class="btn btn-success">Dodaj kolejny samochód</button>
+
+    </div> -->
+
+ 
+
+</div>
+<div class="submit-form">
+    <div *ngIf='!submitted'>
+        <div class="form-group">
+            <label for="username">Imię klienta</label>
+            <input
+                type = "text"
+                class = "form-control"
+                required
+                [(ngModel)]="users.username"
+                name="username"
+            />
+        </div>
+        <div class="form-group">
+            <label for="usersurname">Nazwisko klienta</label>
+            <input
+                type = "text"
+                class = "form-control"
+                required
+                [(ngModel)]="users.usersurname"
+                name="usersurname"
+            />
+        </div>
+        <br>
+        <button (click)="saveCar(); saveUser()" class="btn btn-success">Dodaj</button>
+
+    </div>
+    <div *ngIf="submitted">
+       
+            <h2>Nowy samochód i nowy klient zostali dodani</h2>
+            <button (click)="newCar(); newUser()" class="btn btn-success">Dodaj kolejny samochód i klienta</button>
+
+    </div>
+
+</div>

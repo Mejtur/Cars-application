@@ -1,0 +1,91 @@
+<div class="list row">
+    <div class="col-md-12">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Wyszukaj po marce"
+          [(ngModel)]="carbrand"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchCars()"
+          >
+            Szukaj
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+        <h4>Lista Samochodów</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let car of cars; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveCar(car, i)"
+        >
+        {{ car.carbrand }}
+          {{ car.carmodel }}
+          
+        </li>
+      </ul>
+   
+
+    </div>
+
+            <div class="col-md-6">
+                <h4>Lista Klientów</h4>
+              <ul class="list-group">
+                <li
+                  class="list-group-item"
+                  *ngFor="let user of user; let i = index"
+                  [class.active]="i == currentIndex1"
+                  (click)="setActiveUser(user, i)"
+                >
+                {{ user.username }}
+                  {{ user.usersurname }}
+                  
+                </li>
+              </ul>
+           
+        
+            </div>
+
+  </div> 
+  <div class="col-md-6">
+      <br>
+  </div>
+  <div *ngIf="currentCar">
+    <h4>Więcej info</h4>
+    <div>
+    <div>
+        <label><strong>Marka samochodu: </strong></label> {{ currentCar.carbrand }}
+      </div>
+      
+    <div>
+      <label><strong>Model samochodu: </strong></label> {{ currentCar.carmodel }}
+    </div>
+    <div>
+      <label><strong>Numer rejestracyjny samochodu: </strong></label>
+      {{ currentCar.carplate }}
+    </div>
+    <div>
+        <label><strong>Data wypożyczenia:</strong></label>
+        {{ currentCar.rentdate }}
+      </div>
+  </div>
+
+  <div *ngIf="!currentCar">
+    <br />
+    <p>Kliknij na samochód</p>
+  </div>
+</div>
+
+
+
+
+
+

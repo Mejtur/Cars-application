@@ -1,0 +1,112 @@
+<div class="list row">
+    <div class="col-md-8">
+
+    </div>
+    <div class="col-md-6">
+        <h4>Lista Samochodów</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let car of cars; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveCar(car, i)"
+        >
+        {{ car.carbrand }}
+        {{ car.carmodel }}
+        </li>
+      </ul>
+   
+
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentCar">
+        <h4>Więcej info</h4>
+        <div>
+            <label><strong>Marka samochodu: </strong></label> {{ currentCar.carbrand }}
+          </div>
+        <div>
+          <label><strong>Model samochodu: </strong></label> {{ currentCar.carmodel }}
+        </div>
+        <div>
+          <label><strong>Numer rejestracyjny samochodu: </strong></label>
+          {{ currentCar.carplate }}
+        </div>
+        <div>
+            <label><strong>Data wypożyczenia:</strong></label>
+            {{ currentCar.rentdate }}
+          </div>
+   
+       
+      </div>
+   
+      <div *ngIf="!currentCar">
+        <br />
+        <p>Kliknij na samochód</p>
+      </div>
+
+    </div>
+  </div> 
+
+
+
+ <div *ngIf="currentCar" class="edit-form">
+ 
+    <form>
+        <div class="form-group">
+            <label for="carbrand">Marka Samochodu</label>
+            <input
+              type="text"
+              class="form-control"
+              id="carbrand"
+              [(ngModel)]="currentCar.carbrand"
+              name="carbrand"
+            />
+          </div>
+      <div class="form-group">
+        <label for="carmodel">Model Samochodu</label>
+        <input
+          type="text"
+          class="form-control"
+          id="carmodel"
+          [(ngModel)]="currentCar.carmodel"
+          name="carmodel"
+        />
+      </div>
+      <div class="form-group">
+        <label for="carplate">Numer rejestracyjny samochodu</label>
+        <input
+          type="text"
+          class="form-control"
+          id="carplate"
+          [(ngModel)]="currentCar.carplate"
+          name="carplate"
+        />
+      </div>
+      <div class="form-group">
+        <label for="rentdate">Data wypozyczenia</label>
+        <br>
+        <input 
+        type="date" 
+        id="rentdate" 
+        name="rentdate"
+   value="2021-06-01" 
+   [(ngModel)]="currentCar.rentdate"
+    >
+    </div> 
+  
+    </form>
+
+  
+    <div>
+      <br>
+        <button
+        class="btn btn-primary"
+        type="button"
+        (click)="EditCar()"
+      >
+        Edytuj samochód
+      </button>
+      </div>
+    <p>{{ message }}</p>
+  </div>
+  

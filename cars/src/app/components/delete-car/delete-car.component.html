@@ -1,0 +1,59 @@
+<div class="list row">
+    <div class="col-md-8">
+
+    </div>
+    <div class="col-md-6">
+      <h4>Lista Samochodów</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let car of cars; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveCar(car, i)"
+        >
+        {{ car.carbrand }}
+        {{ car.carmodel }}
+        </li>
+      </ul>
+   
+
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentCar">
+        <h4>Więcej info</h4>
+        <div>
+          <label><strong>Marka samochodu: </strong></label> {{ currentCar.carbrand }}
+        </div>
+        <div>
+          <label><strong>Model samochodu: </strong></label> {{ currentCar.carmodel }}
+        </div>
+        <div>
+          <label><strong>Numer rejestracyjny samochodu: </strong></label>
+          {{ currentCar.carplate }}
+        </div>
+        <div>
+            <label><strong>Data wypożyczenia:</strong></label>
+            {{ currentCar.rentdate }}
+          </div>
+   
+        <a class="badge badge-warning" href="/cars/{{ currentCar.carid }}">
+          Edit
+        </a>
+      </div>
+   
+      <div *ngIf="!currentCar">
+        <br />
+        <p>Kliknij na samochód</p>
+      </div>
+      <div>
+        <button
+        class="btn btn-danger"
+        type="button"
+        (click)="DeleteCar(currentCar.carid)"
+      >
+        Usuń Samochód
+      </button>
+      </div>
+    </div>
+  </div> 
+

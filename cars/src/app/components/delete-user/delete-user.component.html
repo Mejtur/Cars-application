@@ -1,0 +1,39 @@
+<div class="list row">
+    <div class="col-md-8">
+
+    </div>
+    <div class="col-md-6">
+        <h4>Lista Klientów</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let user of users; let i = index"
+          [class.active]="i == currentIndex1"
+          (click)="setActiveUser(user, i)"
+        >
+        {{ user.username }}
+          {{ user.usersurname }}
+          
+        </li>
+      </ul>
+   
+
+    </div>
+   
+      <div *ngIf="!currentUser">
+        <br />
+        <p>Kliknij na klienta</p>
+      </div>
+      <div>
+          <br><br>
+        <button
+        class="btn btn-danger"
+        type="button"
+        (click)="DeleteUser(currentUser.userid)"
+      >
+        Usuń Klienta
+      </button>
+      </div>
+    
+  </div> 
+
